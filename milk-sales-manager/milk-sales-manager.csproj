@@ -62,6 +62,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +76,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\employees\chieuvb.png" />
+    <Content Include="images\employees\nvbuivafsc.png" />
+    <Content Include="images\employees\nvnanamylf.png" />
+    <Content Include="images\gui\icons8-add-24.png" />
+    <Content Include="images\gui\icons8-add-image-96.png" />
+    <Content Include="images\gui\icons8-back-24.png" />
+    <Content Include="images\gui\icons8-bill-32.png" />
+    <Content Include="images\gui\icons8-chart-32.png" />
+    <Content Include="images\gui\icons8-close-24.png" />
+    <Content Include="images\gui\icons8-customer-32.png" />
+    <Content Include="images\gui\icons8-employee-32.png" />
+    <Content Include="images\gui\icons8-exit-24.png" />
+    <Content Include="images\gui\icons8-filter-24.png" />
+    <Content Include="images\gui\icons8-no-image-96.png" />
+    <Content Include="images\gui\icons8-options-32.png" />
+    <Content Include="images\gui\icons8-product-32.png" />
+    <Content Include="images\gui\icons8-search-24.png" />
+    <Content Include="images\gui\icons8-user-96.png" />
+    <Content Include="images\gui\vinamilk-logo-new.png" />
+    <Content Include="images\products\spcreamp4a.png" />
+    <Content Include="images\products\spcreamphc.png" />
+    <Content Include="images\products\spsuada2zl.png" />
+    <Content Include="images\products\spsuatudv5.png" />
+    <Content Include="images\products\spsuatuzir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
