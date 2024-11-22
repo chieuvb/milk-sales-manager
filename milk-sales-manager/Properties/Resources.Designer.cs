@@ -65,7 +65,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_add_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-add-24", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-add-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_add_image_96 {
             get {
-                object obj = ResourceManager.GetObject("icons8-add-image-96", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-add-image-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_back_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-back-24", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-back-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_bill_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-bill-32", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-bill-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_chart_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-chart-32", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-chart-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_close_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-close-24", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-close-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_customer_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-customer-32", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-customer-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +135,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_employee_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-employee-32", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-employee-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -145,7 +145,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_exit_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-exit-24", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-exit-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -155,7 +155,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_filter_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-filter-24", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-filter-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -165,7 +165,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_no_image_96 {
             get {
-                object obj = ResourceManager.GetObject("icons8-no-image-96", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-no-image-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -175,7 +175,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_options_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-options-32", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-options-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -185,7 +185,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_product_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-product-32", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-product-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -195,7 +195,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_search_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-search-24", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-search-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -205,7 +205,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_user_96 {
             get {
-                object obj = ResourceManager.GetObject("icons8-user-96", resourceCulture);
+                object obj = ResourceManager.GetObject($"icons8-user-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -215,7 +215,7 @@ namespace milk_sales_manager.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap vinamilk_logo_new {
             get {
-                object obj = ResourceManager.GetObject("vinamilk-logo-new", resourceCulture);
+                object obj = ResourceManager.GetObject($"vinamilk-logo-new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

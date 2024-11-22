@@ -13,7 +13,7 @@ namespace milk_sales_manager
             InitializeComponent();
         }
 
-        LoggedInUser loggedInUser = new LoggedInUser();
+        private LoggedInUser _loggedInUser = new LoggedInUser();
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -25,31 +25,30 @@ namespace milk_sales_manager
 
         private void CheckLogin(object sender, EventArgs e)
         {
-            loggedInUser = loggedInUser.CheckLogin(this);
-            if (loggedInUser != null)
+            _loggedInUser = _loggedInUser.CheckLogin(this);
+            if (_loggedInUser == null) return;
+            
+            if (_loggedInUser.Role.Contains("nhanvien"))
             {
-                if (loggedInUser.Role.Contains("nhanvien"))
-                {
-                    but_khachhang.Visible = false;
-                    but_nhanvien.Visible = false;
-                    but_thongke.Visible = false;
-                }
-                else
-                {
-                    but_khachhang.Visible = true;
-                    but_nhanvien.Visible = true;
-                    but_thongke.Visible = true;
-                }
+                but_khachhang.Visible = false;
+                but_nhanvien.Visible = false;
+                but_thongke.Visible = false;
+            }
+            else
+            {
+                but_khachhang.Visible = true;
+                but_nhanvien.Visible = true;
+                but_thongke.Visible = true;
             }
         }
 
         private void ButtonThanhToan_Click(object sender, EventArgs e)
         {
-            UserControl tha = new ThanhToanUC(loggedInUser);
+            UserControl tha = new ThanhToanUC(_loggedInUser);
             AddControl(tha, sender);
         }
 
-        void AddControl(UserControl uc, object se)
+        private void AddControl(UserControl uc, object se)
         {
             if (pan_container.Controls.Count > 0)
             {
@@ -57,8 +56,11 @@ namespace milk_sales_manager
                 if (uc.Tag == currentControl?.Tag)
                     return;
 
-                pan_container.Controls.Remove(currentControl);
-                currentControl.Dispose();
+                if (currentControl != null)
+                {
+                    pan_container.Controls.Remove(currentControl);
+                    currentControl.Dispose();
+                }
             }
 
             pan_container.Controls.Add(uc);
@@ -66,17 +68,16 @@ namespace milk_sales_manager
             uc.Dock = DockStyle.Fill;
             uc.BringToFront();
 
-            if (se is Button btn)
-            {
-                foreach (Button preBut in pan_navigator.Controls)
-                    preBut.BackColor = Color.MintCream;
-                btn.BackColor = Color.DeepSkyBlue;
-            }
+            if (!(se is Button btn)) return;
+            
+            foreach (Button preBut in pan_navigator.Controls)
+                preBut.BackColor = Color.MintCream;
+            btn.BackColor = Color.DeepSkyBlue;
         }
 
         private void But_sanpham_Click(object sender, EventArgs e)
         {
-            UserControl san = new SanPhamUC(loggedInUser);
+            UserControl san = new SanPhamUC(_loggedInUser);
             AddControl(san, sender);
         }
 
@@ -100,7 +101,7 @@ namespace milk_sales_manager
 
         private void But_tuychon_Click(object sender, EventArgs e)
         {
-            TuyChonUC tuy = new TuyChonUC(this, loggedInUser);
+            var tuy = new TuyChonUC(this, _loggedInUser);
             tuy.Logout += CheckLogin;
             tuy.ThanhToanClick += ButtonThanhToan_Click;
 
