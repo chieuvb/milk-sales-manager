@@ -10,6 +10,17 @@
 
 Người dùng cần đăng nhập để truy cập vào các chức năng của ứng dụng.
 
+Danh sách tài khoản có trong DB:
+| Mã nhân viên | Mật khẩu | Chức vụ         |
+|--------------|----------|-----------------|
+| nv00000001   | 1        | Admin           |
+| nv00000002   | 1        | Bán hàng        |
+| nv00000003   | 1        | Kế toán         |
+| nv00000004   | 1        | Thu ngân        |
+| nv00000005   | 1        | Giao hàng       |
+| nv00000006   | 1        | Thủ kho         |
+| nv00000007   | 1        | Thực tập sinh   |
+
 ![SAP Fiori Login Page](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20151121.png)
 
 ### 2. Quản lý Sản phẩm
@@ -17,7 +28,7 @@ Người dùng cần đăng nhập để truy cập vào các chức năng của
 Hiển thị danh sách các sản phẩm sữa, cho phép tìm kiếm và lọc sản phẩm.
 Thông tin chi tiết về sản phẩm bao gồm tên sản phẩm, mô tả, nhà sản xuất, đơn vị sử dụng và giá cả.
 
-![Product Management Screen](/milk-sales-manager/screenshots//screenshots/Screenshot%202025-06-07%20151355.png)
+![Product Management Screen](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20151355.png)
 
 ### 3. Quản lý Nhân viên
 
@@ -32,7 +43,7 @@ Có hiển thị ảnh đại diện của nhân viên.
 Quản lý thông tin khách hàng, bao gồm tên khách hàng, địa chỉ, số điện thoại, email và điểm tích lũy.
 Cho phép đăng ký khách hàng mới và chỉnh sửa thông tin khách hàng hiện có.
 
-![Customer Management Screen](/milk-sales-manager/screenshots/Screenshot%2025-06-07%20151527.png)
+![Customer Management Screen](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20151527.png)
 
 ### 5. Lập hóa đơn bán hàng
 
@@ -41,10 +52,9 @@ Cho phép chọn khách hàng và tính toán điểm tích lũy.
 
 ![Sales Invoice Creation Screen](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20155742.png)
 
-### 6. Xem và in hóa đơn
+### 6. In hóa đơn
 
 Sau khi thanh toán, hóa đơn chi tiết sẽ được tạo ra, hiển thị thông tin công ty, người mua hàng, sản phẩm đã mua, số lượng, đơn giá và tổng tiền.
-Hỗ trợ xem lại và in hóa đơn.
 
 ![Invoice Printout](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20160600.png)
 
@@ -57,21 +67,46 @@ Hỗ trợ xem lại và in hóa đơn.
 
 ## Hướng dẫn cài đặt và chạy ứng dụng
 
-1.  **Cài đặt SQL Server:** Đảm bảo bạn đã cài đặt Microsoft SQL Server trên máy tính của mình.
-2.  **Khôi phục cơ sở dữ liệu:**
-    * Tạo một cơ sở dữ liệu mới trong SQL Server Management Studio (SSMS).
-    * Khôi phục file backup cơ sở dữ liệu (nếu có) hoặc tạo các bảng theo cấu trúc đã định.
-    * Cập nhật chuỗi kết nối (connection string) trong ứng dụng C# của bạn để trỏ đến cơ sở dữ liệu này.
-3.  **Mở Project trong Visual Studio:** Mở file `.sln` của project bằng Visual Studio.
-4.  **Build Project:** Xây dựng project để đảm bảo tất cả các thư viện và phụ thuộc được tải đúng cách.
-5.  **Chạy ứng dụng:** Nhấn `F5` hoặc nút "Start" trong Visual Studio để chạy ứng dụng.
+1.  **Clone Repository:**
+    Sử dụng Git để clone project về máy tính của bạn:
+    ```bash
+    git clone https://github.com/chieuvb/milk-sales-manager.git
+    ```
+    Sau khi clone, bạn sẽ có thư mục `milk-sales-manager` chứa mã nguồn.
 
-## Cấu trúc Project (dự kiến)
+2.  **Cài đặt SQL Server:**
+    Đảm bảo bạn đã cài đặt Microsoft SQL Server trên máy tính của mình (phiên bản 2012 trở lên được khuyến nghị).
 
-* **UI Layer (WinForms):** Chứa các form giao diện người dùng.
-* **Business Logic Layer:** Xử lý các nghiệp vụ kinh doanh.
-* **Data Access Layer (ADO.NET):** Tương tác với cơ sở dữ liệu (các lớp kết nối, truy vấn dữ liệu).
-* **Database:** Các script SQL để tạo bảng, dữ liệu mẫu, và thủ tục lưu trữ (stored procedures) nếu có.
+3.  **Khôi phục cơ sở dữ liệu:**
+    * Mở SQL Server Management Studio (SSMS).
+    * Tạo một cơ sở dữ liệu mới từ file [milk_sales_manager.sql](milk_sales_manager.sql).
+    * **Cập nhật chuỗi kết nối (Connection String):** Mở project trong Visual Studio. Tìm file cấu hình `App.config`. Cập nhật chuỗi kết nối để trỏ đến cơ sở dữ liệu SQL Server của bạn:
+        ```xml
+        <connectionStrings>
+           <add name="DBEntities" connectionString="metadata=res://*/models.Model1.csdl|res://*/models.Model1.ssdl|res://*/models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=<TEN_SERVER>;initial catalog=<TEN_DATABASE>;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+         </connectionStrings>
+        ```
+        Thay `TEN_SERVER`, `<TEN_DATABASE>` bằng tên server SQL, database của bạn.
+
+4.  **Mở Project trong Visual Studio:**
+    Mở file `milk-sales-manager.sln` trong thư mục gốc của project bằng Visual Studio (phiên bản 2022 được khuyến nghị).
+
+5.  **Cài đặt các gói NuGet:**
+    Cài đặt [EntityFramework (6.5.1)](https://www.nuget.org/packages/EntityFramework/6.5.1)
+
+6.  **Build Project:**
+    Trong Visual Studio, chọn `Build` -> `Build Solution` (hoặc nhấn `Ctrl+Shift+B`) để biên dịch project và đảm bảo không có lỗi.
+
+7.  **Chạy ứng dụng:**
+    Nhấn `F5` hoặc nút "Start" trong Visual Studio để chạy ứng dụng.
+
+## Cấu trúc Project
+
+* **controls:** Chứa các form giao diện người dùng.
+* **models:** Chứa model ADO.NET.
+* **media:** Chứa file icons UI.
+* **modules:** Chứa các module tiện ích.
+* **screenshots:** Chứa file ảnh chụp mà hình ứng dụng.
 
 ## Đóng góp
 
