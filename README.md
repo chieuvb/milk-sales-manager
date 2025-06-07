@@ -10,14 +10,14 @@
 
 Người dùng cần đăng nhập để truy cập vào các chức năng của ứng dụng.
 
-![SAP Fiori Login Page](/screenshots/Screenshot%202025-06-07%20151121.png)
+![SAP Fiori Login Page](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20151121.png)
 
 ### 2. Quản lý Sản phẩm
 
 Hiển thị danh sách các sản phẩm sữa, cho phép tìm kiếm và lọc sản phẩm.
 Thông tin chi tiết về sản phẩm bao gồm tên sản phẩm, mô tả, nhà sản xuất, đơn vị sử dụng và giá cả.
 
-![Product Management Screen](/screenshots//screenshots/Screenshot%202025-06-07%20151355.png)
+![Product Management Screen](/milk-sales-manager/screenshots//screenshots/Screenshot%202025-06-07%20151355.png)
 
 ### 3. Quản lý Nhân viên
 
@@ -25,28 +25,28 @@ Cho phép quản lý thông tin nhân viên, bao gồm thêm, sửa, xóa nhân 
 Thông tin chi tiết về nhân viên như tên, địa chỉ, giới tính, ngày sinh, số điện thoại, email, chức vụ, địa chỉ cụ thể và kinh nghiệm.
 Có hiển thị ảnh đại diện của nhân viên.
 
-![Employee Management Screen](/screenshots/Screenshot%202025-06-07%20151501.png)
+![Employee Management Screen](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20151501.png)
 
 ### 4. Quản lý Khách hàng
 
 Quản lý thông tin khách hàng, bao gồm tên khách hàng, địa chỉ, số điện thoại, email và điểm tích lũy.
 Cho phép đăng ký khách hàng mới và chỉnh sửa thông tin khách hàng hiện có.
 
-![Customer Management Screen](/screenshots/Screenshot%2025-06-07%20151527.png)
+![Customer Management Screen](/milk-sales-manager/screenshots/Screenshot%2025-06-07%20151527.png)
 
 ### 5. Lập hóa đơn bán hàng
 
 Giao diện để tạo hóa đơn bán hàng, thêm các sản phẩm vào hóa đơn, hiển thị tổng tiền và chiết khấu.
 Cho phép chọn khách hàng và tính toán điểm tích lũy.
 
-![Sales Invoice Creation Screen](/screenshots/Screenshot%202025-06-07%20155742.png)
+![Sales Invoice Creation Screen](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20155742.png)
 
 ### 6. Xem và in hóa đơn
 
 Sau khi thanh toán, hóa đơn chi tiết sẽ được tạo ra, hiển thị thông tin công ty, người mua hàng, sản phẩm đã mua, số lượng, đơn giá và tổng tiền.
 Hỗ trợ xem lại và in hóa đơn.
 
-![Invoice Printout](/screenshots/Screenshot%202025-06-07%20160600.png)
+![Invoice Printout](/milk-sales-manager/screenshots/Screenshot%202025-06-07%20160600.png)
 
 ## Công nghệ sử dụng
 
