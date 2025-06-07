@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietDonHang">
           <Key>
             <PropertyRef Name="maChiTietDonHang" />
@@ -271,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Model1StoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietSanPham" EntityType="Self.ChiTietSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
@@ -333,7 +333,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ChiTietDonHang">
           <Key>
             <PropertyRef Name="maChiTietDonHang" />
@@ -622,7 +622,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
           <EntitySet Name="ChiTietSanPhams" EntityType="Self.ChiTietSanPham" />
           <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
@@ -685,9 +685,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DBDBEntities">
           <EntitySetMapping Name="ChiTietDonHangs">
-            <EntityTypeMapping TypeName="Model1.ChiTietDonHang">
+            <EntityTypeMapping TypeName="Model.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
                 <ScalarProperty Name="maChiTietDonHang" ColumnName="maChiTietDonHang" />
                 <ScalarProperty Name="maDonHang" ColumnName="maDonHang" />
@@ -699,7 +699,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietSanPhams">
-            <EntityTypeMapping TypeName="Model1.ChiTietSanPham">
+            <EntityTypeMapping TypeName="Model.ChiTietSanPham">
               <MappingFragment StoreEntitySet="ChiTietSanPham">
                 <ScalarProperty Name="maChiTietSanPham" ColumnName="maChiTietSanPham" />
                 <ScalarProperty Name="maSanPham" ColumnName="maSanPham" />
@@ -714,7 +714,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChucVus">
-            <EntityTypeMapping TypeName="Model1.ChucVu">
+            <EntityTypeMapping TypeName="Model.ChucVu">
               <MappingFragment StoreEntitySet="ChucVu">
                 <ScalarProperty Name="maChucVu" ColumnName="maChucVu" />
                 <ScalarProperty Name="tenChucVu" ColumnName="tenChucVu" />
@@ -724,7 +724,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DoiTuongs">
-            <EntityTypeMapping TypeName="Model1.DoiTuong">
+            <EntityTypeMapping TypeName="Model.DoiTuong">
               <MappingFragment StoreEntitySet="DoiTuong">
                 <ScalarProperty Name="maDoiTuong" ColumnName="maDoiTuong" />
                 <ScalarProperty Name="tenDoiTuong" ColumnName="tenDoiTuong" />
@@ -734,7 +734,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonHangs">
-            <EntityTypeMapping TypeName="Model1.DonHang">
+            <EntityTypeMapping TypeName="Model.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
                 <ScalarProperty Name="maDonHang" ColumnName="maDonHang" />
                 <ScalarProperty Name="maKhachHang" ColumnName="maKhachHang" />
@@ -748,7 +748,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonVis">
-            <EntityTypeMapping TypeName="Model1.DonVi">
+            <EntityTypeMapping TypeName="Model.DonVi">
               <MappingFragment StoreEntitySet="DonVi">
                 <ScalarProperty Name="maDonVi" ColumnName="maDonVi" />
                 <ScalarProperty Name="tenDonVi" ColumnName="tenDonVi" />
@@ -758,7 +758,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="Model1.KhachHang">
+            <EntityTypeMapping TypeName="Model.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="maKhachHang" ColumnName="maKhachHang" />
                 <ScalarProperty Name="maLoaiKhachHang" ColumnName="maLoaiKhachHang" />
@@ -772,7 +772,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiKhachHangs">
-            <EntityTypeMapping TypeName="Model1.LoaiKhachHang">
+            <EntityTypeMapping TypeName="Model.LoaiKhachHang">
               <MappingFragment StoreEntitySet="LoaiKhachHang">
                 <ScalarProperty Name="maLoaiKhachHang" ColumnName="maLoaiKhachHang" />
                 <ScalarProperty Name="tenLoaiKhachHang" ColumnName="tenLoaiKhachHang" />
@@ -782,7 +782,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
-            <EntityTypeMapping TypeName="Model1.NhanVien">
+            <EntityTypeMapping TypeName="Model.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="maNhanVien" ColumnName="maNhanVien" />
                 <ScalarProperty Name="maChucVu" ColumnName="maChucVu" />
@@ -798,7 +798,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaSanXuats">
-            <EntityTypeMapping TypeName="Model1.NhaSanXuat">
+            <EntityTypeMapping TypeName="Model.NhaSanXuat">
               <MappingFragment StoreEntitySet="NhaSanXuat">
                 <ScalarProperty Name="maNhaSanXuat" ColumnName="maNhaSanXuat" />
                 <ScalarProperty Name="tenNhaSanXuat" ColumnName="tenNhaSanXuat" />
@@ -808,7 +808,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="Model1.SanPham">
+            <EntityTypeMapping TypeName="Model.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="maSanPham" ColumnName="maSanPham" />
                 <ScalarProperty Name="maNhaSanXuat" ColumnName="maNhaSanXuat" />
@@ -820,7 +820,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
-            <EntityTypeMapping TypeName="Model1.TaiKhoan">
+            <EntityTypeMapping TypeName="Model.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
                 <ScalarProperty Name="maNhanVien" ColumnName="maNhanVien" />
                 <ScalarProperty Name="matKhau" ColumnName="matKhau" />

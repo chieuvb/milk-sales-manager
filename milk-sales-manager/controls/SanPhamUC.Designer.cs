@@ -368,7 +368,7 @@
             this.pictureBoxSanPham.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSanPham.TabIndex = 34;
             this.pictureBoxSanPham.TabStop = false;
-            this.pictureBoxSanPham.DoubleClick += new System.EventHandler(this.Pic_sanpham_DoubleClick);
+            this.pictureBoxSanPham.Click += new System.EventHandler(this.pictureBoxSanPham_Click);
             // 
             // label8
             // 

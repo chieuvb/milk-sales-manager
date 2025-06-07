@@ -31,7 +31,7 @@ namespace milk_sales_manager.controls
             pictureBoxHinhAnh.SizeMode = PictureBoxSizeMode.Zoom;
             ImageProcess imageProcess = new ImageProcess(false, oneImage);
 
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 NhanVien nhanVien = vinamilkEntities.NhanViens.AsNoTracking().FirstOrDefault(n => n.maNhanVien == loggedInUser.Username);
 

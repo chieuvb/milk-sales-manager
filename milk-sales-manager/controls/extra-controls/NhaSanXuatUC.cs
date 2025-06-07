@@ -40,7 +40,7 @@ namespace milk_sales_manager.controls.extra_controls
 
         void LoadData()
         {
-            Entities vinamilkEntities = new Entities();
+            DBEntities vinamilkEntities = new DBEntities();
             NhaSanXuat nha = new NhaSanXuat();
             List<NhaSanXuat> nhas = vinamilkEntities.NhaSanXuats.ToList();
             nhas.Add(nha);
@@ -72,7 +72,7 @@ namespace milk_sales_manager.controls.extra_controls
                         diaChi = dat_nhasanxuat["diaChi", e.RowIndex].Value?.ToString() ?? string.Empty
                     };
 
-                    using (Entities vnm = new Entities())
+                    using (DBEntities vnm = new DBEntities())
                     {
                         string maNhaSanXuat = "sx" + (nha.tenNhaSanXuat.Length >= 5 ? nha.tenNhaSanXuat.Trim().Replace(" ", "").Substring(0, 5) : nha.tenNhaSanXuat) + DateTime.Now.ToString("fff");
 
@@ -132,7 +132,7 @@ namespace milk_sales_manager.controls.extra_controls
 
                     if (MessageBox.Show("Nhà sản xuất \"" + nam + "\" sẽ bị xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
-                        using (var vnm = new Entities())
+                        using (var vnm = new DBEntities())
                         {
                             string id = dat_nhasanxuat.Rows[e.RowIndex].Cells["maNhaSanXuat"].Value.ToString();
 

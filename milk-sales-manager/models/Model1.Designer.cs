@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\chieu\source\repos\milk-sales-manager\milk-sales-manager\models\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\chieuvb\source\repos\chieuvb\milk-sales-manager\milk-sales-manager\models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

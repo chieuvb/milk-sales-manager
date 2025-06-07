@@ -23,7 +23,7 @@ namespace milk_sales_manager.controls.extra_controls
 
         private void RefreshData()
         {
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 List<LoaiKhachHang> loaiKhachHangs = vinamilkEntities.LoaiKhachHangs.AsNoTracking().ToList();
                 loaiKhachHangs.Add(new LoaiKhachHang());
@@ -61,7 +61,7 @@ namespace milk_sales_manager.controls.extra_controls
                         {
                             string maLoai = GenerateID(loaiKhachHang.tenLoaiKhachHang);
 
-                            using (Entities vinamilkEntities = new Entities())
+                            using (DBEntities vinamilkEntities = new DBEntities())
                             {
                                 LoaiKhachHang loai = vinamilkEntities.LoaiKhachHangs.FirstOrDefault(l => l.maLoaiKhachHang == loaiKhachHang.maLoaiKhachHang) ?? new LoaiKhachHang
                                 {
@@ -90,7 +90,7 @@ namespace milk_sales_manager.controls.extra_controls
                         }
                         else
                         {
-                            using (Entities vinamilkEntities = new Entities())
+                            using (DBEntities vinamilkEntities = new DBEntities())
                             {
                                 LoaiKhachHang loai = vinamilkEntities.LoaiKhachHangs.FirstOrDefault(l => l.maLoaiKhachHang == loaiKhachHang.maLoaiKhachHang);
 
@@ -113,7 +113,7 @@ namespace milk_sales_manager.controls.extra_controls
                     {
                         if (MessageBox.Show("Loại khách hàng \"" + loaiKhachHang.tenLoaiKhachHang + "\" sẽ bị xóa vĩnh viễn!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                         {
-                            using (Entities vinamilkEntities = new Entities())
+                            using (DBEntities vinamilkEntities = new DBEntities())
                             {
                                 LoaiKhachHang loai = vinamilkEntities.LoaiKhachHangs.FirstOrDefault(l => l.maLoaiKhachHang == loaiKhachHang.maLoaiKhachHang);
 

@@ -51,7 +51,7 @@ namespace milk_sales_manager.controls
         {
             try
             {
-                using (Entities vin = new Entities())
+                using (DBEntities vin = new DBEntities())
                 {
                     dat_sanpham.DataSource = await vin.SanPhams.AsNoTracking().ToListAsync();
 
@@ -105,7 +105,7 @@ namespace milk_sales_manager.controls
                     string maSanPham = dat_sanpham["maSanPhamC", e.RowIndex].Value?.ToString() ?? string.Empty;
                     string imageKey = null;
 
-                    using (Entities vin = new Entities())
+                    using (DBEntities vin = new DBEntities())
                     {
                         sanPham = await vin.SanPhams.FirstOrDefaultAsync(s => s.maSanPham == maSanPham);
 
@@ -191,7 +191,7 @@ namespace milk_sales_manager.controls
 
                 if (result == "success")
                 {
-                    using (Entities vin = new Entities())
+                    using (DBEntities vin = new DBEntities())
                     {
                         SanPham existingSanPham = vin.SanPhams.FirstOrDefault(s => s.maSanPham == sanPham.maSanPham);
                         if (existingSanPham == null)
@@ -241,7 +241,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private void AddNewSanPham(Entities vin)
+        private void AddNewSanPham(DBEntities vin)
         {
             try
             {
@@ -269,7 +269,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private SanPham CreateSanPhamObject(string msp, Entities vin)
+        private SanPham CreateSanPhamObject(string msp, DBEntities vin)
         {
             try
             {
@@ -309,7 +309,7 @@ namespace milk_sales_manager.controls
 
                 string hinhAnh = imageProcess.SaveAndCacheImage(msp, pictureBoxSanPham.Image, cacheImage);
 
-                using (Entities vin = new Entities())
+                using (DBEntities vin = new DBEntities())
                 {
                     string maDonVi = vin.DonVis.FirstOrDefault(d => d.tenDonVi == comboBoxDonVi.SelectedItem.ToString())?.maDonVi;
                     ChiTietSanPham chiTietSanPham = new ChiTietSanPham
@@ -335,7 +335,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private void UpdateSanPham(Entities vin, SanPham sanPham)
+        private void UpdateSanPham(DBEntities vin, SanPham sanPham)
         {
             try
             {
@@ -381,7 +381,7 @@ namespace milk_sales_manager.controls
                 DialogResult dr = MessageBox.Show("Bạn có thực sự muốn xóa sản phẩm: \"" + tex_tensanpham.Text + "\"?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
-                    using (Entities vin = new Entities())
+                    using (DBEntities vin = new DBEntities())
                     {
                         SanPham sanPham = vin.SanPhams.FirstOrDefault(s => s.maSanPham == tex_masanpham.Text);
                         ChiTietSanPham chiTiet = vin.ChiTietSanPhams.FirstOrDefault(c => c.maSanPham == tex_masanpham.Text);
@@ -426,7 +426,7 @@ namespace milk_sales_manager.controls
 
                 RegexInput reg = new RegexInput();
 
-                using (Entities vin = new Entities())
+                using (DBEntities vin = new DBEntities())
                 {
                     string keyword = reg.RemoveVietnameseMarks(tex_timkiem.Text.ToLower());
 
@@ -474,29 +474,6 @@ namespace milk_sales_manager.controls
                 tex_timkiem.Text = "Nhập mã sản phẩm hoặc tên sản phẩm ở đây!";
                 tex_timkiem.ForeColor = Color.Gray;
                 tex_timkiem.Font = new Font("Arial", 12, FontStyle.Italic);
-            }
-        }
-
-        private void Pic_sanpham_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog
-                {
-                    Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png;)|*.jpg; *.jpeg; *.gif; *.bmp; *.png;"
-                };
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string imagePath = openFileDialog.FileName;
-                    pictureBoxSanPham.SizeMode = PictureBoxSizeMode.Zoom;
-                    Image image = Image.FromFile(imagePath);
-                    pictureBoxSanPham.Image = image;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi tải ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -586,6 +563,31 @@ namespace milk_sales_manager.controls
         private void But_closepan_Click(object sender, EventArgs e)
         {
             panelChiTiet.Visible = false;
+        }
+
+        private void pictureBoxSanPham_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png;)|*.jpg; *.jpeg; *.gif; *.bmp; *.png;"
+                };
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = openFileDialog.FileName;
+                    pictureBoxSanPham.SizeMode = PictureBoxSizeMode.Zoom;
+                    using (var tempImage = Image.FromFile(imagePath))
+                    {
+                        pictureBoxSanPham.Image = new Bitmap(tempImage);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

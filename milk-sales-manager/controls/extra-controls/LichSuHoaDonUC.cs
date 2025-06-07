@@ -24,7 +24,7 @@ namespace milk_sales_manager.controls.extra_controls
             if (!loggedInUser.Role.Contains("admin"))
                 buttonDelete.Visible = false;
 
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 dataGridViewDonHang.DataSource = vinamilkEntities.DonHangs.AsNoTracking().ToList();
             }
@@ -54,7 +54,7 @@ namespace milk_sales_manager.controls.extra_controls
                 List<ChiTietDonHang> chiTiets = new List<ChiTietDonHang>();
                 List<SanPham> sanPhams = new List<SanPham>();
 
-                using (Entities vinamilkEntities = new Entities())
+                using (DBEntities vinamilkEntities = new DBEntities())
                 {
                     donHang = vinamilkEntities.DonHangs.AsNoTracking().FirstOrDefault(d => d.maDonHang == maDonHang);
                     nguoiBan = vinamilkEntities.NhanViens.AsNoTracking().FirstOrDefault(n => n.maNhanVien == donHang.maNhanVien).tenNhanVien;
@@ -101,7 +101,7 @@ namespace milk_sales_manager.controls.extra_controls
             {
                 if (MessageBox.Show("Bạn có thực sự muốn xóa hóa đơn " + maDonHang + " khỏi hệ thống?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         DonHang donHang = vinamilkEntities.DonHangs.FirstOrDefault(d => d.maDonHang == maDonHang.Replace("#", ""));
                         if (donHang != null)

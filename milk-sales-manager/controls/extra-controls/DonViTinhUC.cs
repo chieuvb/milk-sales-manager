@@ -36,7 +36,7 @@ namespace milk_sales_manager.controls.extra_controls
 
         void LoadData()
         {
-            Entities vinamilkEntities = new Entities();
+            DBEntities vinamilkEntities = new DBEntities();
             DonVi don = new DonVi();
             List<DonVi> dons = vinamilkEntities.DonVis.ToList();
             dons.Add(don);
@@ -62,7 +62,7 @@ namespace milk_sales_manager.controls.extra_controls
                         moTa = dat_donvi["moTaDataGridViewTextBoxColumn", e.RowIndex].Value?.ToString() ?? string.Empty,
                         trangThai = true
                     };
-                    using (Entities vnm = new Entities())
+                    using (DBEntities vnm = new DBEntities())
                     {
                         string tenDonViKhongKhoangTrang = don.tenDonVi.Trim().Replace(" ", "");
                         string maDonVi = "dv" + (tenDonViKhongKhoangTrang.Length >= 5 ? tenDonViKhongKhoangTrang.Substring(0, 5) : tenDonViKhongKhoangTrang).PadRight(5, 'v') + DateTime.Now.ToString("fff");
@@ -120,7 +120,7 @@ namespace milk_sales_manager.controls.extra_controls
 
                     if (MessageBox.Show("Đơn vị tính \"" + nam + "\" sẽ bị xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
-                        using (var vnm = new Entities())
+                        using (var vnm = new DBEntities())
                         {
                             string id = dat_donvi.Rows[e.RowIndex].Cells["maDonViDataGridViewTextBoxColumn"].Value.ToString();
 

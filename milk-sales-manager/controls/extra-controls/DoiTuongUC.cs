@@ -30,7 +30,7 @@ namespace milk_sales_manager.controls.extra_controls
 
         void LoadData()
         {
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 List<DoiTuong> doiTuongs = vinamilkEntities.DoiTuongs.ToList();
                 doiTuongs.Add(new DoiTuong());
@@ -65,7 +65,7 @@ namespace milk_sales_manager.controls.extra_controls
                             trangThai = true
                         };
 
-                        using (Entities vnm = new Entities())
+                        using (DBEntities vnm = new DBEntities())
                         {
                             GenerateString gen = new GenerateString();
                             string maDoiTuong = gen.StringID("dt", doi.tenDoiTuong);
@@ -115,7 +115,7 @@ namespace milk_sales_manager.controls.extra_controls
 
                         if (MessageBox.Show("Đối tượng sử dụng \"" + nam + "\" sẽ bị xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                         {
-                            using (var vnm = new Entities())
+                            using (var vnm = new DBEntities())
                             {
                                 string id = dat_doituong.Rows[e.RowIndex].Cells["maDoiTuongDataGridViewTextBoxColumn"].Value.ToString();
 

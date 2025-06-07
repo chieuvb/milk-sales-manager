@@ -32,7 +32,7 @@ namespace milk_sales_manager.controls.extra_controls
         {
             List<ChucVu> chucVus = new List<ChucVu>();
 
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 chucVus = vinamilkEntities.ChucVus.AsNoTracking().ToList();
             }
@@ -68,7 +68,7 @@ namespace milk_sales_manager.controls.extra_controls
 
                                 if (!string.IsNullOrEmpty(tenChucVu) && !string.IsNullOrEmpty(moTa))
                                 {
-                                    using (Entities vinamilkEntities = new Entities())
+                                    using (DBEntities vinamilkEntities = new DBEntities())
                                     {
                                         ChucVu chucVu = vinamilkEntities.ChucVus.FirstOrDefault(c => c.maChucVu == maChucVu);
 
@@ -113,7 +113,7 @@ namespace milk_sales_manager.controls.extra_controls
                                     throw new Exception("Không tìm thấy chức vụ!");
                                 }
 
-                                using (Entities vinamilkEntities = new Entities())
+                                using (DBEntities vinamilkEntities = new DBEntities())
                                 {
                                     ChucVu chucVu = vinamilkEntities.ChucVus.FirstOrDefault(c => c.maChucVu == maChucVu);
 

@@ -47,7 +47,7 @@ namespace milk_sales_manager.controls
             string year = comboBoxNam.SelectedItem.ToString();
             List<DonHang> donHangs = new List<DonHang>();
 
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 donHangs.AddRange(vinamilkEntities.DonHangs.AsNoTracking().ToList());
             }

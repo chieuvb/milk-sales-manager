@@ -30,7 +30,7 @@ namespace milk_sales_manager.controls
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                     throw new Exception("Vui lòng nhập tên tài khoản và mật khẩu phù hợp!");
 
-                using (Entities vinamilkEntities = new Entities())
+                using (DBEntities vinamilkEntities = new DBEntities())
                 {
                     TaiKhoan taiKhoan = vinamilkEntities.TaiKhoans.AsNoTracking().FirstOrDefault(t => t.maNhanVien == username);
 

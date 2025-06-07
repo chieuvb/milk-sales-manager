@@ -36,7 +36,7 @@ namespace milk_sales_manager.controls
         {
             comboBoxChucVu.Items.Clear();
 
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 dataGridViewNhanVien.DataSource = vinamilkEntities.NhanViens.AsNoTracking().ToList();
 
@@ -56,51 +56,52 @@ namespace milk_sales_manager.controls
 
         private void DataGridViewNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            try
             {
-                panelRight.Visible = true;
-                pictureBoxNhanVien.SizeMode = PictureBoxSizeMode.Zoom;
-
-                nhanVien.maNhanVien = dataGridViewNhanVien["maNhanVienDataGridViewTextBoxColumn", e.RowIndex].Value.ToString();
-                NhanVien nhan = new NhanVien();
-                string tenCV = string.Empty;
-
-                using (Entities vinamilkEntities = new Entities())
+                if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                 {
-                    nhan = vinamilkEntities.NhanViens.AsNoTracking().FirstOrDefault(n => n.maNhanVien == nhanVien.maNhanVien);
-                    tenCV = vinamilkEntities.ChucVus.AsNoTracking().FirstOrDefault(c => c.maChucVu == nhan.maChucVu).tenChucVu;
-                }
+                    panelRight.Visible = true;
+                    pictureBoxNhanVien.SizeMode = PictureBoxSizeMode.Zoom;
 
-                textBoxHoTen.Text = nhan.tenNhanVien;
-                if (nhan.gioiTinh)
-                    comboBoxGioiTinh.SelectedIndex = 0;
-                else
-                    comboBoxGioiTinh.SelectedIndex = 1;
+                    nhanVien.maNhanVien = dataGridViewNhanVien["maNhanVienDataGridViewTextBoxColumn", e.RowIndex].Value.ToString();
+                    NhanVien nhan = new NhanVien();
+                    string tenCV = string.Empty;
 
-                dateTimePickerNgaySinh.Value = nhan.ngaySinh;
-                textBoxDienThoai.Text = nhan.soDienThoai;
-                textBoxEmail.Text = nhan.email;
-                textBoxDiaChi.Text = nhan.diaChi;
-                textBoxKinhNhiem.Text = nhan.kinhNghiem;
-
-                foreach (var com in comboBoxChucVu.Items)
-                {
-                    if (com.ToString() == tenCV)
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
-                        comboBoxChucVu.SelectedItem = com;
-                        break;
+                        nhan = vinamilkEntities.NhanViens.AsNoTracking().FirstOrDefault(n => n.maNhanVien == nhanVien.maNhanVien);
+                        tenCV = vinamilkEntities.ChucVus.AsNoTracking().FirstOrDefault(c => c.maChucVu == nhan.maChucVu).tenChucVu;
                     }
+
+                    textBoxHoTen.Text = nhan.tenNhanVien;
+                    if (nhan.gioiTinh)
+                        comboBoxGioiTinh.SelectedIndex = 0;
+                    else
+                        comboBoxGioiTinh.SelectedIndex = 1;
+
+                    dateTimePickerNgaySinh.Value = nhan.ngaySinh;
+                    textBoxDienThoai.Text = nhan.soDienThoai;
+                    textBoxEmail.Text = nhan.email;
+                    textBoxDiaChi.Text = nhan.diaChi;
+                    textBoxKinhNhiem.Text = nhan.kinhNghiem;
+
+                    foreach (var com in comboBoxChucVu.Items)
+                    {
+                        if (com.ToString() == tenCV)
+                        {
+                            comboBoxChucVu.SelectedItem = com;
+                            break;
+                        }
+                    }
+
+                    imageProcess.LoadAndCacheImage(nhan.hinhAnh.Trim(), cacheImage);
+                    pictureBoxNhanVien.Image = cacheImage.ContainsKey(nhan.hinhAnh.Trim()) ? cacheImage[nhan.hinhAnh.Trim()] : cacheImage["no-image"];
                 }
-
-                imageProcess.LoadAndCacheImage(nhan.hinhAnh.Trim(), cacheImage);
-                pictureBoxNhanVien.Image = cacheImage.ContainsKey(nhan.hinhAnh.Trim()) ? cacheImage[nhan.hinhAnh.Trim()] : cacheImage["no-image"];
             }
-        }
-
-        private void PictureBoxNhanVien_DoubleClick(object sender, EventArgs e)
-        {
-            pictureBoxNhanVien.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxNhanVien.Image = imageProcess.LoadImageToPictureBox();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hiển thị dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ButtonThemNhanVien_Click(object sender, EventArgs e)
@@ -136,7 +137,7 @@ namespace milk_sales_manager.controls
 
                 if (result == "success")
                 {
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         NhanVien existingNhanVien = vinamilkEntities.NhanViens.FirstOrDefault(n => n.maNhanVien == nhanVien.maNhanVien);
                         if (existingNhanVien == null)
@@ -186,7 +187,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private void AddNewNhanVien(Entities vinamilkEntities)
+        private void AddNewNhanVien(DBEntities vinamilkEntities)
         {
             try
             {
@@ -208,7 +209,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private NhanVien CreatNhanVienObject(Entities vinamilkEntities)
+        private NhanVien CreatNhanVienObject(DBEntities vinamilkEntities)
         {
             GenerateString gen = new GenerateString();
 
@@ -256,7 +257,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private void UpdateNhanVien(Entities vinamilkEntities, NhanVien existingNhanVien)
+        private void UpdateNhanVien(DBEntities vinamilkEntities, NhanVien existingNhanVien)
         {
             try
             {
@@ -297,7 +298,7 @@ namespace milk_sales_manager.controls
                 DialogResult dr = MessageBox.Show("Bạn có thực sự muốn xóa nhân viên: \"" + textBoxHoTen.Text + "\"?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         NhanVien nhanVienForDelete = vinamilkEntities.NhanViens.FirstOrDefault(n => n.maNhanVien == nhanVien.maNhanVien);
 
@@ -336,7 +337,7 @@ namespace milk_sales_manager.controls
 
                 RegexInput reg = new RegexInput();
 
-                using (Entities vinamilkEntities = new Entities())
+                using (DBEntities vinamilkEntities = new DBEntities())
                 {
                     string keyword = reg.RemoveVietnameseMarks(textBoxTimKiem.Text.ToLower());
 
@@ -392,6 +393,12 @@ namespace milk_sales_manager.controls
 
             dataGridViewNhanVien.Visible = true;
             panelSearch.Visible = true;
+        }
+
+        private void pictureBoxNhanVien_Click(object sender, EventArgs e)
+        {
+            pictureBoxNhanVien.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxNhanVien.Image = imageProcess.LoadImageToPictureBox();
         }
     }
 }

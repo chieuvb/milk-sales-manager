@@ -28,7 +28,7 @@ namespace milk_sales_manager.controls
 
         private async void RefreshData()
         {
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 dataGridViewKhachHang.DataSource = await vinamilkEntities.KhachHangs.AsNoTracking().ToListAsync();
                 List<LoaiKhachHang> loaiKhachHangs = await vinamilkEntities.LoaiKhachHangs.AsNoTracking().ToListAsync();
@@ -78,7 +78,7 @@ namespace milk_sales_manager.controls
                     dateTimePickerNgayDangKy.Value = khachHang.ngayDangKy;
                     textBoxDiemTichLuy.Text = khachHang.diemTichLuy.ToString();
 
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         LoaiKhachHang loaiKhach = vinamilkEntities.LoaiKhachHangs.AsNoTracking().FirstOrDefault(l => l.maLoaiKhachHang == khachHang.maLoaiKhachHang);
 
@@ -134,7 +134,7 @@ namespace milk_sales_manager.controls
 
                 if (result == "success")
                 {
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         KhachHang existingKhachHang = vinamilkEntities.KhachHangs.FirstOrDefault(k => k.maKhachHang == khachHang.maKhachHang);
 
@@ -204,7 +204,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private void AddNewKhachHang(Entities vinamilkEntities, string maKhach)
+        private void AddNewKhachHang(DBEntities vinamilkEntities, string maKhach)
         {
             try
             {
@@ -235,7 +235,7 @@ namespace milk_sales_manager.controls
             }
         }
 
-        private void UpdateKhachHang(Entities vinamilkEntities, KhachHang khach)
+        private void UpdateKhachHang(DBEntities vinamilkEntities, KhachHang khach)
         {
             try
             {
@@ -279,7 +279,7 @@ namespace milk_sales_manager.controls
         {
             try
             {
-                using (Entities vinamilkEntities = new Entities())
+                using (DBEntities vinamilkEntities = new DBEntities())
                 {
                     KhachHang khach = vinamilkEntities.KhachHangs.FirstOrDefault(k => k.maKhachHang == khachHang.maKhachHang);
 

@@ -40,7 +40,7 @@ namespace milk_sales_manager.controls
             if (khachHang.maKhachHang == "kh-khdonle")
                 checkBoxDungDiem.Visible = false;
 
-            using (Entities vin = new Entities())
+            using (DBEntities vin = new DBEntities())
             {
                 List<SanPham> sanPhams = await vin.SanPhams.AsNoTracking().ToListAsync();
                 dataGridViewSanPham.DataSource = sanPhams;
@@ -68,7 +68,7 @@ namespace milk_sales_manager.controls
                 {
                     string tenSanPham = dataGridViewSanPham["tenSanPhamDataGridViewTextBoxColumn", e.RowIndex].Value.ToString().Trim();
 
-                    using (Entities vin = new Entities())
+                    using (DBEntities vin = new DBEntities())
                     {
                         SanPham sanPham = vin.SanPhams.AsNoTracking().FirstOrDefault(s => s.tenSanPham == tenSanPham);
                         ChiTietSanPham chiTietSanPham = vin.ChiTietSanPhams.AsNoTracking().FirstOrDefault(c => c.maSanPham == sanPham.maSanPham);
@@ -239,7 +239,7 @@ namespace milk_sales_manager.controls
         {
             RegexInput reg = new RegexInput();
 
-            using (Entities vin = new Entities())
+            using (DBEntities vin = new DBEntities())
             {
                 string keyword = reg.RemoveVietnameseMarks(textBoxSanPham.Text.ToLower());
                 List<SanPham> sanPhams = vin.SanPhams.AsNoTracking().ToList();
@@ -299,7 +299,7 @@ namespace milk_sales_manager.controls
             {
                 RegexInput reg = new RegexInput();
 
-                using (Entities vinamilkEntities = new Entities())
+                using (DBEntities vinamilkEntities = new DBEntities())
                 {
                     string keyword = reg.RemoveVietnameseMarks(textBoxKhachHang.Text.ToLower());
 
@@ -350,7 +350,7 @@ namespace milk_sales_manager.controls
 
                 if (!string.IsNullOrEmpty(maKhach))
                 {
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         khachHang = vinamilkEntities.KhachHangs.AsNoTracking().FirstOrDefault(k => k.maKhachHang == maKhach);
                     }
@@ -451,7 +451,7 @@ namespace milk_sales_manager.controls
                     if (donHang.hinhThucThanhToan.Contains("--"))
                         throw new Exception("Vui lòng chọn phương thức thanh toán!");
 
-                    using (Entities vinamilkEntities = new Entities())
+                    using (DBEntities vinamilkEntities = new DBEntities())
                     {
                         foreach (DataGridViewRow row in dataGridViewHoaDon.Rows)
                         {
@@ -569,7 +569,7 @@ namespace milk_sales_manager.controls
             string maKhachHang = dataRow.Cells["maKhachHangDataGridViewTextBoxColumn"].Value.ToString();
             KhachHang khachHang = new KhachHang();
 
-            using (Entities vinamilkEntities = new Entities())
+            using (DBEntities vinamilkEntities = new DBEntities())
             {
                 nhanVien = vinamilkEntities.NhanViens.AsNoTracking().FirstOrDefault(n => n.maNhanVien == loggedInUser.Username);
                 khachHang = vinamilkEntities.KhachHangs.AsNoTracking().FirstOrDefault(k => k.maKhachHang == maKhachHang);

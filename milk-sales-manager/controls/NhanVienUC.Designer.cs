@@ -340,7 +340,7 @@
             this.pictureBoxNhanVien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxNhanVien.TabIndex = 0;
             this.pictureBoxNhanVien.TabStop = false;
-            this.pictureBoxNhanVien.DoubleClick += new System.EventHandler(this.PictureBoxNhanVien_DoubleClick);
+            this.pictureBoxNhanVien.Click += new System.EventHandler(this.pictureBoxNhanVien_Click);
             // 
             // panelSearch
             // 

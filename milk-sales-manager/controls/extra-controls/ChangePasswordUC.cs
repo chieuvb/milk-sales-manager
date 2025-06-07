@@ -44,7 +44,7 @@ namespace milk_sales_manager.controls.extra_controls
                 if (newPassword != retypePassword)
                     throw new Exception("Mật khẩu mới không khớp!");
 
-                using (var vinamilkEntities = new Entities())
+                using (var vinamilkEntities = new DBEntities())
                 {
                     TaiKhoan taiKhoan = vinamilkEntities.TaiKhoans.FirstOrDefault(t => t.maNhanVien.Trim() == loggedInUser.Username);
                     if (taiKhoan != null)
